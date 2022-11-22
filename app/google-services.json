@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "568045695297",
+    "project_id": "cateringinaja-44586",
+    "storage_bucket": "cateringinaja-44586.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568045695297:android:cc3a34ac1c3adbe93fb1c0",
+        "android_client_info": {
+          "package_name": "com.example.sistemlogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568045695297-iksaatrameb2nn4vpgdct4j1qgdkc6ho.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPHWPyfsKMIpV52VoNJYoYDLqt9GHeZzQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568045695297-iksaatrameb2nn4vpgdct4j1qgdkc6ho.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
