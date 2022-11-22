@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var PassWord : EditText
     private lateinit var buttonLogin : Button
     private lateinit var statusLogin : TextView
-    private lateinit var daoUser: DAOUser
+    private val daoUser = DAOUser()
 
     companion object {
         private const val STATE_RESULT = "state_result"
@@ -31,8 +31,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         statusLogin = findViewById(R.id.result_data)
 
         buttonLogin.setOnClickListener(this)
-
-        val daoUser = DAOUser()
 
         if(savedInstanceState != null) {
             val result = savedInstanceState.getString(STATE_RESULT)
@@ -64,14 +62,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
             if(!isEmptyFields) {
                 statusLogin.text = "Success"
+
+                val user = User(UserName.text.toString(), PassWord.text.toString())
+                daoUser.add(user).addOnSuccessListener{
+                    Toast.makeText(this, "Berhasil tambah user", Toast.LENGTH_SHORT).show()
+                }.addOnFailureListener {
+                    Toast.makeText(this, it.message.toString(), Toast.LENGTH_SHORT).show()
+                }
             }
 
-            val user = User(UserName.text.toString(), PassWord.text.toString())
-            daoUser.add(user).addOnSuccessListener{
-                Toast.makeText(this, "Berhasil tambah user", Toast.LENGTH_SHORT).show()
-            }.addOnFailureListener {
-                Toast.makeText(this, it.message.toString(), Toast.LENGTH_SHORT).show()
-            }
         }
     }
 }
