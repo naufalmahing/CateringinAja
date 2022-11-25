@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var PassWord : EditText
     private lateinit var buttonLogin : Button
     private lateinit var statusLogin : TextView
-    private val daoUser = DAOUser()
+    private val controlUser = ControlUser(this)
 
     companion object {
         private const val STATE_RESULT = "state_result"
@@ -45,32 +45,30 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(p0: View?) {
         if(p0?.id == R.id.btnLogin) {
-            val userName = UserName.text.toString().trim()
-            val passWord = PassWord.text.toString().trim()
-
-            var isEmptyFields = false
-
-            if(userName.isEmpty()) {
-                isEmptyFields = true
-                UserName.error = "Fields ini tidak boleh kosong"
+            if(!validasi()) {
+//                statusLogin.text = "Success"
+//                controlUser.validasi(UserName.text.toString().trim())
+                controlUser.validasi(UserName.text.toString())
             }
-
-            if(passWord.isEmpty()) {
-                isEmptyFields = true
-                PassWord.error = "Fields ini tidak boleh kosong"
-            }
-
-            if(!isEmptyFields) {
-                statusLogin.text = "Success"
-
-                val user = User(UserName.text.toString(), PassWord.text.toString())
-                daoUser.add(user).addOnSuccessListener{
-                    Toast.makeText(this, "Berhasil tambah user", Toast.LENGTH_SHORT).show()
-                }.addOnFailureListener {
-                    Toast.makeText(this, it.message.toString(), Toast.LENGTH_SHORT).show()
-                }
-            }
-
         }
+    }
+
+    fun validasi(): Boolean {
+        val userName = UserName.text.toString().trim()
+        val passWord = PassWord.text.toString().trim()
+
+        var isEmptyFields = false
+
+        if(userName.isEmpty()) {
+            isEmptyFields = true
+            UserName.error = "Fields ini tidak boleh kosong"
+        }
+
+        if(passWord.isEmpty()) {
+            isEmptyFields = true
+            PassWord.error = "Fields ini tidak boleh kosong"
+        }
+
+        return isEmptyFields
     }
 }
