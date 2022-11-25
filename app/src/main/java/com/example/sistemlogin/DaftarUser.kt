@@ -7,27 +7,34 @@ import kotlin.collections.ArrayList
 
 class DaftarUser {
     private var databaseReference: DatabaseReference
-    private val listUser = ArrayList<Masakan>()
+    private val listUser = ArrayList<User>()
 
     init {
         val db = FirebaseDatabase.getInstance("https://cateringinaja-44586-default-rtdb.asia-southeast1.firebasedatabase.app")
-        databaseReference = db.getReference("DaftarMasakan")
-        loadData()
+        databaseReference = db.getReference("DaftarUser")
     }
 
-    fun addMasakan(masakan: Masakan) : Task<Void> {
-        return databaseReference.push().setValue(masakan)
+    fun addUser(user: User) : Task<Void> {
+        return databaseReference.push().setValue(user)
+    }
+
+    fun validasi(username: String): Boolean {
+        var res = false
+        for (item in listUser) {
+            if (item.getUsername() == username) {
+                res = true
+            }
+        }
+        return res
     }
 
     fun loadData() {
         databaseReference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
-                listUser.clear()
                 for (item in dataSnapshot.children) {
-                    val user = item.getValue(Masakan::class.java)
+                    val user = item.getValue(User::class.java)
                     if (user != null) {
                         listUser.add(user)
-                        Log.w("loadData", user.toString())
                     } else {
                         Log.w("loadData", "null")
                     }
@@ -41,8 +48,9 @@ class DaftarUser {
     }
 
     fun showList() {
+        println("start")
         for (item in listUser) {
-            Log.v("showlist", item.getEmail())
+            println(item.getEmail())
         }
     }
 
