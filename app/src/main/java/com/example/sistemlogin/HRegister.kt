@@ -5,9 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 
-class RegisterPage : AppCompatActivity() {
+class HRegister : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,19 +22,13 @@ class RegisterPage : AppCompatActivity() {
         val backButton = findViewById<Button>(R.id.btn_cancel)
 
         val controlUser = ControlUser(this)
-        controlUser.loadData()
 
         registerButton.setOnClickListener {
-//             fungsi validasi copas dari main activity nanda
-
-//            controlUser.register(etUsername.text.toString(), etEmail.text.toString(), etNoHP.text.toString(), etUsername.text.toString(), etPassword.text.toString())
-//            startActivity(Intent(this, MainActivity::class.java))
-
-            controlUser.validasi(etUsername.text.toString())
+            controlUser.register(etUsername.text.toString(), etEmail.text.toString(), etNoHP.text.toString(), etUsername.text.toString(), etPassword.text.toString())
         }
 
         backButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, HLogin::class.java))
         }
     }
 

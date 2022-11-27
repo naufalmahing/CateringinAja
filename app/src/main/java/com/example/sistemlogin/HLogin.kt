@@ -1,6 +1,7 @@
 
 package com.example.sistemlogin
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -8,9 +9,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import android.widget.Toast
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class HLogin : AppCompatActivity(), View.OnClickListener {
     private lateinit var UserName : EditText
     private lateinit var PassWord : EditText
     private lateinit var buttonLogin : Button
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         UserName = findViewById(R.id.username_field)
         PassWord = findViewById(R.id.password_fields)
@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             val result = savedInstanceState.getString(STATE_RESULT)
             statusLogin.text = result
         }
+
+        findViewById<TextView>(R.id.textView).setOnClickListener {
+            startActivity(Intent(this, HRegister::class.java))
+        }
+
     }
 
     override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
@@ -46,9 +51,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(p0: View?) {
         if(p0?.id == R.id.btnLogin) {
             if(!validasi()) {
-//                statusLogin.text = "Success"
-//                controlUser.validasi(UserName.text.toString().trim())
-                controlUser.validasi(UserName.text.toString())
+                controlUser.login(UserName.text.toString(), PassWord.text.toString())
             }
         }
     }
