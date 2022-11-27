@@ -7,7 +7,6 @@ class User(
     private var username: String = "",
     private var password: String = ""
 ) {
-//    constructor() : this("", "")
     public fun getNama() = nama
     public fun getEmail() = email
     public fun getnoHP() = noHP

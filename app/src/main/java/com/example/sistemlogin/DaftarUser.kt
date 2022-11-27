@@ -12,16 +12,17 @@ class DaftarUser {
     init {
         val db = FirebaseDatabase.getInstance("https://cateringinaja-44586-default-rtdb.asia-southeast1.firebasedatabase.app")
         databaseReference = db.getReference("DaftarUser")
+        loadData()
     }
 
     fun addUser(user: User) : Task<Void> {
         return databaseReference.push().setValue(user)
     }
 
-    fun validasi(username: String): Boolean {
+    fun validasi(username: String, password: String): Boolean {
         var res = false
         for (item in listUser) {
-            if (item.getUsername() == username) {
+            if (item.getUsername() == username && item.getPassword() == password) {
                 res = true
             }
         }
