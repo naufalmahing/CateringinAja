@@ -8,8 +8,9 @@ import android.widget.TextView
 
 class HUtama : AppCompatActivity() {
 
-    val controlMasakan = ControlMitra(this)
+    val controlMitra = ControlMitra(this)
     val daftarMitra = DaftarMitra()
+    val controlMasakan = ControlMasakan(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,10 +18,20 @@ class HUtama : AppCompatActivity() {
 
         daftarMitra.showList()
 
+        val etSearch = findViewById<EditText>(R.id.editText)
+
         findViewById<Button>(R.id.button).setOnClickListener {
             // input email, nama atribut, value
 
-            controlMasakan.ubahProfil("nopal", "noHP", "087734982389")
+//            controlMitra.ubahProfil("nopal", "noHP", "087734982389")
+
+//            var res = "masakan\n"
+//            for (item in controlMasakan.search(etSearch.text.toString())) {
+//                res += item.getNama() + "\n"
+//            }
+//            findViewById<TextView>(R.id.textView2).text = res
+
+//            controlMasakan.aturMasakan("nanda", "EDIT", "kari", "deskripsi", "coto makassar bang")
         }
 
         findViewById<Button>(R.id.button3).setOnClickListener {
