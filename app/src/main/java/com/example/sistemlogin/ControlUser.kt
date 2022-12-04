@@ -15,7 +15,7 @@ class ControlUser(val context: Context) {
             Toast.makeText(context, "berhasil daftar", Toast.LENGTH_SHORT).show()
 
             // intent ke main page
-            val intent = Intent(context, MainPageActivity::class.java)
+            val intent = Intent(context, HUtama::class.java)
             startActivity(context, intent, Bundle())
         }.addOnFailureListener {
             Toast.makeText(context, "gagal daftar", Toast.LENGTH_SHORT).show()
@@ -28,7 +28,7 @@ class ControlUser(val context: Context) {
             Toast.makeText(context, "berhasil login", Toast.LENGTH_SHORT).show()
 
             // intent ke main page
-            val intent = Intent(context, MainPageActivity::class.java)
+            val intent = Intent(context, HUtama::class.java)
             startActivity(context, intent, Bundle())
         } else {
             Toast.makeText(context, "gagal login", Toast.LENGTH_SHORT).show()

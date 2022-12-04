@@ -14,7 +14,7 @@
         android:theme="@style/Theme.SistemLogin"
         tools:targetApi="31">
         <activity
-            android:name=".MainPageActivity"
+            android:name=".HUtama"
             android:exported="false" />
         <activity
             android:name=".HLogin"
