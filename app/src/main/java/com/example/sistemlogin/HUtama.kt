@@ -11,6 +11,7 @@ class HUtama : AppCompatActivity() {
     val controlMitra = ControlMitra(this)
     val daftarMitra = DaftarMitra()
     val controlMasakan = ControlMasakan(this)
+    val controlPesanan = ControlPesanan(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,8 @@ class HUtama : AppCompatActivity() {
 //            findViewById<TextView>(R.id.textView2).text = res
 
 //            controlMasakan.aturMasakan("nanda", "EDIT", "kari", "deskripsi", "coto makassar bang")
+
+//            controlPesanan.tambahPesanan(Masakan("gulai kambing", "daging lembut", 25000, "nopal"), 50, "balikpapan", "mobile bank", "nanda", "nopal")
         }
 
         findViewById<Button>(R.id.button3).setOnClickListener {
