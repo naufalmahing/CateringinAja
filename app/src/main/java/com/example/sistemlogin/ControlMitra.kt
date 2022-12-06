@@ -4,9 +4,11 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 
 class ControlMitra(val context: Context): AppCompatActivity() {
-    private val daftarMasakan = DaftarMitra()
+    private val daftarMitra = DaftarMitra()
 
     fun ubahProfil(email: String, atribut: String, value: String) {
-        daftarMasakan.setProfil(email, atribut, value)
+        daftarMitra.setProfil(email, atribut, value)
     }
+
+    fun getListMitra() = daftarMitra.getListMitra()
 }

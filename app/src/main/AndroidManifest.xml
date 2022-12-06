@@ -17,6 +17,9 @@
             android:name=".HUtama"
             android:exported="false" />
         <activity
+            android:name=".KateringActivity"
+            android:exported="false" />
+        <activity
             android:name=".HLogin"
             android:exported="true">
             <intent-filter>

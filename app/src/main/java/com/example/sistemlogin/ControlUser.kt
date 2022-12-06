@@ -24,14 +24,17 @@ class ControlUser(val context: Context) {
     }
 
     fun login(username: String, password: String) {
-        if (daftarUser.validasi(username, password)) {
-            Toast.makeText(context, "berhasil login", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context, KateringActivity::class.java)
+        startActivity(context, intent, Bundle())
 
-            // intent ke main page
-            val intent = Intent(context, HUtama::class.java)
-            startActivity(context, intent, Bundle())
-        } else {
-            Toast.makeText(context, "gagal login", Toast.LENGTH_SHORT).show()
-        }
+//        if (daftarUser.validasi(username, password)) {
+//            Toast.makeText(context, "berhasil login", Toast.LENGTH_SHORT).show()
+//
+//            // intent ke main page
+//            val intent = Intent(context, KateringActivity::class.java)
+//            startActivity(context, intent, Bundle())
+//        } else {
+//            Toast.makeText(context, "gagal login", Toast.LENGTH_SHORT).show()
+//        }
     }
 }

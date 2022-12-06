@@ -11,7 +11,7 @@ class DaftarMitra {
 
     init {
         val db = FirebaseDatabase.getInstance("https://cateringinaja-44586-default-rtdb.asia-southeast1.firebasedatabase.app")
-        databaseReference = db.getReference("DaftarUser")
+        databaseReference = db.getReference("DaftarMitra")
         loadData()
     }
 
@@ -48,4 +48,8 @@ class DaftarMitra {
             Log.v("showlist", item.getEmail())
         }
     }
+
+    fun getListMitra() = listMitra
+
+    fun get(): Query = databaseReference.orderByKey()
 }
