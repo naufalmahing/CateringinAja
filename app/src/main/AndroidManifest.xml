@@ -20,6 +20,15 @@
             android:name=".KateringActivity"
             android:exported="false" />
         <activity
+            android:name=".HProfil"
+            android:exported="false" />
+        <activity
+            android:name=".HPesanan"
+            android:exported="false" />
+        <activity
+            android:name=".HPencarian"
+            android:exported="false" />
+        <activity
             android:name=".HLogin"
             android:exported="true">
             <intent-filter>

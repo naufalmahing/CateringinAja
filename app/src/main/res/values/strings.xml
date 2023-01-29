@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">sistemLogin</string>
+    <string name="app_name">CateringinAja</string>
     <string name="password">password</string>
     <string name="login_app">Login App</string>
     <string name="username_or_email">username or email</string>

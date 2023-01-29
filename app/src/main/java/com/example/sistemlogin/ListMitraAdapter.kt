@@ -58,7 +58,7 @@ class ListMitraAdapter(private val listMitra: ArrayList<Mitra>): RecyclerView.Ad
         holder.tvLokasi.text = mitra.getAlamat()
 
         holder.itemView.setOnClickListener{
-//            onItemClickCallback.onItemClicked(listMitra[holder.adapterPosition])
+            onItemClickCallback.onItemClicked(list[holder.adapterPosition])
         }
     }
 

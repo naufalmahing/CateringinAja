@@ -8,17 +8,35 @@ import kotlin.collections.HashMap
 class DaftarMitra {
     private var databaseReference: DatabaseReference
     private val listMitra = ArrayList<Mitra>()
+    val db = FirebaseDatabase.getInstance("https://cateringinaja-44586-default-rtdb.asia-southeast1.firebasedatabase.app")
 
     init {
-        val db = FirebaseDatabase.getInstance("https://cateringinaja-44586-default-rtdb.asia-southeast1.firebasedatabase.app")
         databaseReference = db.getReference("DaftarMitra")
         loadData()
+    }
+
+    fun getKey(email: String): String {
+        var key = ""
+        db.getReference("DaftarUser").orderByChild("email").equalTo(email).addListenerForSingleValueEvent(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (item in snapshot.children) {
+                    key = item.key.toString()
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+        return key
     }
 
     fun setProfil(email: String, atribut: String, value: String) {
         val hash = HashMap<String, Any>()
         hash.put(atribut, value)
+
         databaseReference.child(email).updateChildren(hash)
+//        db.getReference("DaftarUser").child(email).updateChildren(hash)
         showList()
     }
 
@@ -38,7 +56,7 @@ class DaftarMitra {
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-                Log.w("validasi", "Failed to read value", error.toException())
+                Log.w("loadData", "Failed to read value", error.toException())
             }
         })
     }
